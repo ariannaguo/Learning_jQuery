@@ -73,32 +73,32 @@
 //        $('#switcher').off('click.collapse');
 //    });
 //});
-$(document).ready(function(){
-    var toggleSwitcher = function(event){
-        if(!$(event.target).is('button')){
-            $('#switcher button').toggleClass('hidden');
-        }
-    };
-    $('#switcher').on('click.collapse',toggleSwitcher);
-    $('#switcher-narrow,#switcher-large').click(function(){
-        $('#switcher').off('click.collapse');
-    });
-    $('#switcher-default').click(function(){
-        $('#switcher').on('click.collapse',toggleSwitcher);
-    });
-});
-//按default的时候并不能打开／收回，按2次default再按背景，才恢复toggle的功能
-//$(document).ready(function () {
-//    var toggleSwitcher = function (event) {
-//        if (!$(event.target).is('button')) {
+//$(document).ready(function(){
+//    var toggleSwitcher = function(event){
+//        if(!$(event.target).is('button')){
 //            $('#switcher button').toggleClass('hidden');
 //        }
 //    };
-//    $('#switcher').on('click', toggleSwitcher);
-//    $('#switcher button').click(function () {
-//        $('#switcher').off('click', toggleSwitcher);
-//        if (this.id == 'switcher-default') {
-//            $('#switcher').on('click', toggleSwitcher);
-//        }
+//    $('#switcher').on('click.collapse',toggleSwitcher);
+//    $('#switcher-narrow,#switcher-large').click(function(){
+//        $('#switcher').off('click.collapse');
+//    });
+//    $('#switcher-default').click(function(){
+//        $('#switcher').on('click.collapse',toggleSwitcher);
 //    });
 //});
+//按default的时候并不能打开／收回，按2次default再按背景，才恢复toggle的功能
+$(document).ready(function () {
+    var toggleSwitcher = function (event) {
+        if (!$(event.target).is('button')) {
+            $('#switcher button').toggleClass('hidden');
+        }
+    };
+    $('#switcher').on('click', toggleSwitcher);
+    $('#switcher button').click(function () {
+        $('#switcher').off('click', toggleSwitcher);
+        if (this.id == 'switcher-default') {
+            $('#switcher').on('click', toggleSwitcher);
+        }
+    });
+});
