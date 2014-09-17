@@ -53,13 +53,52 @@
 //    });
 //});
 
+//$(document).ready(function(){
+//    $('#switcher').click(function (event) {
+//        if(!$(event.target).is('button')){
+//            $('#switcher button').toggleClass('hidden');
+//        }
+//    });
+//    $('#switcher-narrow,#switcher-large').click(function(){
+//        $('#switcher').off('click');
+//    });
+//});
+//$(document).ready(function(){
+//    $('#switcher').on('click.collapse',function (event) {
+//        if(!$(event.target).is('button')){
+//            $('#switcher button').toggleClass('hidden');
+//        }
+//    });
+//    $('#switcher-narrow,#switcher-large').click(function(){
+//        $('#switcher').off('click.collapse');
+//    });
+//});
 $(document).ready(function(){
-    $('#switcher').click(function (event) {
+    var toggleSwitcher = function(event){
         if(!$(event.target).is('button')){
             $('#switcher button').toggleClass('hidden');
         }
-    });
+    };
+    $('#switcher').on('click.collapse',toggleSwitcher);
     $('#switcher-narrow,#switcher-large').click(function(){
-        $('#switcher').off('click');
+        $('#switcher').off('click.collapse');
+    });
+    $('#switcher-default').click(function(){
+        $('#switcher').on('click.collapse',toggleSwitcher);
     });
 });
+//按default的时候并不能打开／收回，按2次default再按背景，才恢复toggle的功能
+//$(document).ready(function () {
+//    var toggleSwitcher = function (event) {
+//        if (!$(event.target).is('button')) {
+//            $('#switcher button').toggleClass('hidden');
+//        }
+//    };
+//    $('#switcher').on('click', toggleSwitcher);
+//    $('#switcher button').click(function () {
+//        $('#switcher').off('click', toggleSwitcher);
+//        if (this.id == 'switcher-default') {
+//            $('#switcher').on('click', toggleSwitcher);
+//        }
+//    });
+//});
