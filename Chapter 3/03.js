@@ -43,13 +43,23 @@
 //        }
 //    });
 //});
-$(document).ready(function () {
-    $('#switcher-default').addClass('selected');
-    $('#switcher').on('click', 'button', function () {
-        var bodyClass = event.target.id.split('-')[1];
-        $('body').removeClass().addClass(bodyClass);
-        $('#switcher button').removeClass('selected');
-        $(this).addClass('selected');
+//$(document).ready(function () {
+//    $('#switcher-default').addClass('selected');
+//    $('#switcher').on('click', 'button', function () {
+//        var bodyClass = event.target.id.split('-')[1];
+//        $('body').removeClass().addClass(bodyClass);
+//        $('#switcher button').removeClass('selected');
+//        $(this).addClass('selected');
+//    });
+//});
+
+$(document).ready(function(){
+    $('#switcher').click(function (event) {
+        if(!$(event.target).is('button')){
+            $('#switcher button').toggleClass('hidden');
+        }
+    });
+    $('#switcher-narrow,#switcher-large').click(function(){
+        $('#switcher').off('click');
     });
 });
-
