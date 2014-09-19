@@ -13,13 +13,17 @@
 // If it is released below where it was pressed, then remove the hidden class from all paragraphs.
 
 $(document).ready(function(){
+    //Exercise 1
     $('.author').click(function(){
         $('.author').addClass('selected');
     });
+
+    //Exercise 2
     $('.chapter-title').dblclick(function(){
         $(this).nextAll().toggleClass('hidden')
     });
 
+    //Exercise 3
     var toggleSwither = function(event){
         if(!$(event.target).is('button')){
             $('#switcher button').toggleClass('hidden');
@@ -40,15 +44,29 @@ $(document).ready(function(){
     };
     //Begin with the switcher-default button "selected"
     $('#switcher-default').addClass('selected');
-
     var i=0;
     $(document).keyup(function(event){
         var bodyClass = ["default","narrow","large"];
 //        var key = String.fromCharCode(event.keyCode);
             if(event.keyCode==39){
                 i=(i+1)%3;
+                //余数总是0，1，2
 //                console.log(i);
                 setBodyClass(bodyClass[i]);
             }
     });
+
+    //Exercise 4
+    $('p').mousemove(function(event){
+        console.log("Mouse location:( "+event.pageX+", "+event.pageY+" )");
+    });
+
+    //Exercise 5
+    $('body').mouseup(function(){
+        $('p').addClass('hidden')
+    });
+    $('body').mousedown(function(){
+        $('p').removeClass('hidden')
+    });
+
 });
